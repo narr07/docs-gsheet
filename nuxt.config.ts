@@ -7,7 +7,9 @@ export default defineNuxtConfig({
     '@nuxt/content',
     'nuxt-og-image',
     'nuxt-llms',
-    '@nuxtjs/mcp-toolkit'
+    '@nuxtjs/mcp-toolkit',
+    '@nuxtjs/i18n',
+    'nuxt-gsheet'
   ],
 
   devtools: {

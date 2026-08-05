@@ -1,5 +1,7 @@
 # Nuxt Docs Template
 
+https://script.google.com/macros/s/AKfycbzxQy164ISaJVAwErxdp5GKAeypRiW_H8-EM2Zxo6MZA_kRyY_x9-OmhJvnYZWReCFRJA/exec
+
 [![Nuxt UI](https://img.shields.io/badge/Made%20with-Nuxt%20UI-00DC82?logo=nuxt&labelColor=020420)](https://ui.nuxt.com)
 
 Use this template to build your own documentation with [Nuxt UI](https://ui.nuxt.com) quickly.
