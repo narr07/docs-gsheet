@@ -1,5 +1,8 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 function getContentRoutes(dir: string, basePrefix: string): string[] {
   const routes: string[] = []
@@ -64,10 +67,6 @@ export default defineNuxtConfig({
     }
   },
 
-  routeRules: {
-    '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } }
-  },
-
   experimental: {
     asyncContext: true
   },
@@ -75,6 +74,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-06-30',
 
   nitro: {
+    preset: 'cloudflare-pages',
     prerender: {
       routes: prerenderRoutes,
       crawlLinks: true
