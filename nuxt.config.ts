@@ -177,22 +177,22 @@ export default defineNuxtConfig({
     ]
   },
 
-  // mcp: {
-  //   name: 'Nuxt GSheet Documentation MCP'
-  // },
   mcp: {
-    enabled: false
+    name: 'Nuxt GSheet Documentation MCP'
   },
+  // mcp: {
+  //   enabled: false
+  // },
 
   ogImage: {
     zeroRuntime: true
-  },
-  studio: {
-    repository: {
-      provider: 'github', // 'github' or 'gitlab'
-      owner: 'narr07',
-      repo: 'docs-gsheet',
-      branch: 'main'
-    }
   }
+  // studio: {
+  //   repository: {
+  //     provider: 'github', // 'github' or 'gitlab'
+  //     owner: 'narr07',
+  //     repo: 'docs-gsheet',
+  //     branch: 'main'
+  //   }
+  // }
 })
