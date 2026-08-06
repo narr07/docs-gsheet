@@ -25,3 +25,8 @@ logs
 
 # VSC
 .history
+
+# Agents & Skills
+.agents
+skills-lock.json
+suppoet id dan en.md

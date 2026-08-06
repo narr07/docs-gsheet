@@ -18,6 +18,15 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', language: 'en-US' },
+      { code: 'id', name: 'Bahasa Indonesia', language: 'id-ID' }
+    ],
+    defaultLocale: 'en',
+    strategy: 'prefix'
+  },
+
   content: {
     build: {
       markdown: {

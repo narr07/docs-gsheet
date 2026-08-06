@@ -1,5 +1,21 @@
 <script setup lang="ts">
-const { data: page } = await useAsyncData('index', () => queryCollection('landing').path('/').first())
+import type { Collections } from '@nuxt/content'
+
+const { locale } = useI18n()
+const collectionName = computed(() => `landing_${locale.value}` as keyof Collections)
+
+const { data: page } = await useAsyncData(
+  () => `index-${locale.value}`,
+  async () => {
+    let doc = await queryCollection(collectionName.value).first()
+    if (!doc && locale.value !== 'en') {
+      doc = await queryCollection('landing_en').first()
+    }
+    return doc
+  },
+  { watch: [locale] }
+)
+
 if (!page.value) {
   throw createError({ statusCode: 404, statusMessage: 'Page not found', fatal: true })
 }
@@ -12,8 +28,12 @@ useSeoMeta({
   title,
   ogTitle: title,
   description,
-  ogDescription: description,
-  ogImage: 'https://ui.nuxt.com/assets/templates/nuxt/docs-light.png'
+  ogDescription: description
+})
+
+defineOgImageComponent('Docs', {
+  title,
+  description
 })
 </script>
 

@@ -2,14 +2,20 @@
 import type { ContentNavigationItem } from '@nuxt/content'
 
 const navigation = inject<Ref<ContentNavigationItem[]>>('navigation')
-
 const { header } = useAppConfig()
+
+const { locale } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+const localePath = useLocalePath()
+
+const targetLocale = computed(() => (locale.value === 'en' ? 'id' : 'en'))
+const toggleLocalePath = computed(() => switchLocalePath(targetLocale.value))
 </script>
 
 <template>
   <UHeader
     :ui="{ center: 'flex-1' }"
-    :to="header?.to || '/'"
+    :to="header?.to ? localePath(header.to) : localePath('/')"
   >
     <UContentSearchButton
       v-if="header?.search"
@@ -39,7 +45,7 @@ const { header } = useAppConfig()
       #left
     >
       <NuxtLink
-        :to="header?.to || '/'"
+        :to="header?.to ? localePath(header.to) : localePath('/')"
         class="flex items-center gap-2.5 font-bold text-lg"
       >
         <AppLogo class="w-auto h-8 shrink-0" />
@@ -53,6 +59,14 @@ const { header } = useAppConfig()
       <UContentSearchButton
         v-if="header?.search"
         class="lg:hidden"
+      />
+
+      <UButton
+        :to="toggleLocalePath"
+        color="neutral"
+        variant="ghost"
+        :label="targetLocale.toUpperCase()"
+        aria-label="Switch language"
       />
 
       <UColorModeButton v-if="header?.colorMode" />
