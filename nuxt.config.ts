@@ -1,3 +1,8 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -40,7 +45,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare-pages',
     alias: {
-      'agents/mcp': '~/server/mcp/noop.ts'
+      'agents/mcp': path.resolve(__dirname, 'server/mcp/noop.ts')
     },
     prerender: {
       routes: ['/', '/en', '/id'],
