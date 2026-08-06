@@ -45,14 +45,14 @@ export default defineNuxtConfig({
     prerender: {
       routes: ['/', '/en', '/id'],
       crawlLinks: true
-    },
-    cloudflare: {
-      pages: {
-        routes: {
-          exclude: ['/_nuxt/*', '/favicon.ico', '/build/*']
-        }
-      }
     }
+    // cloudflare: {
+    //   pages: {
+    //     routes: {
+    //       exclude: ['/_nuxt/*', '/favicon.ico', '/build/*']
+    //     }
+    //   }
+    // }
   },
 
   eslint: {
