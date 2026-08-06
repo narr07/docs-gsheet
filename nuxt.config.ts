@@ -30,9 +30,6 @@ export default defineNuxtConfig({
           searchDepth: 1
         }
       }
-    },
-    experimental: {
-      sqliteConnector: 'native'
     }
   },
 
