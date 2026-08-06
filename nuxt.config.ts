@@ -177,8 +177,11 @@ export default defineNuxtConfig({
     ]
   },
 
+  // mcp: {
+  //   name: 'Nuxt GSheet Documentation MCP'
+  // },
   mcp: {
-    name: 'Nuxt GSheet Documentation MCP'
+    enabled: false
   },
 
   ogImage: {
