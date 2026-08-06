@@ -243,17 +243,6 @@ Automatic detection for public, private, and serverless Google Sheets setups.
     Authenticate with JWT service account credentials for secure, private spreadsheet access.
     ::::
 
-    ::::u-page-feature
-    ---
-    icon: i-lucide-database-zap
-    to: /advanced/caching
-    ---
-    #title
-    Stampede-Proof Caching
-
-    #description
-    Built-in cache with lock protection and stale-while-revalidate to survive quota limits.
-    ::::
   :::
 ::
 
