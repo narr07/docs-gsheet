@@ -1,26 +1,28 @@
 ---
 seo:
-  title: Nuxt Docs Template
-  description: Create stunning, fast and SEO-optimized documentation sites with Nuxt UI.
+  title: nuxt-gsheet - Zero-Config Google Sheets Integration for Nuxt
+  description: Ultra-fast, zero-config, secure Google Sheets integration for Nuxt 3 and 4 with built-in stampede protection, multi-auth detection, and DevTools dashboard.
 ---
 
-::u-page-hero{class="dark:bg-gradient-to-b from-neutral-900 to-neutral-950"}
+::u-page-hero{class="dark:bg-gradient-to-b from-neutral-900  to-neutral-950"}
 ---
 orientation: horizontal
+ui:
+  container: 'py-12 sm:py-16 lg:py-20'
 ---
 #top
 :hero-background
 
 #title
-Ship Beautiful [Documentation]{.text-primary}.
+[Google Sheets]{.text-primary} for Nuxt.
 
 #description
-Build professional documentation with Nuxt UI's powerful components, enhanced typography, and seamless Nuxt Content integration. The same system trusted by the entire [Nuxt ecosystem](https://nuxt.com).
+Use Google Sheets as a lightweight CMS or database with server-side proxy security, stampede-proof caching, 5 authentication modes, and a dedicated Nuxt DevTools tab. The same system trusted by the entire [Nuxt ecosystem](https://nuxt.com){.text-primary}.
 
 #links
   :::u-button
   ---
-  to: /getting-started
+  to: /getting-started/introduction
   size: xl
   trailing-icon: i-lucide-arrow-right
   ---
@@ -33,10 +35,10 @@ Build professional documentation with Nuxt UI's powerful components, enhanced ty
   color: neutral
   variant: outline
   size: xl
-  to: https://github.com/nuxt-ui-templates/docs
+  to: https://github.com/narr07/nuxt-gsheet
   target: _blank
   ---
-  Use this template
+  Use this module
   :::
 
 #default
@@ -44,28 +46,34 @@ Build professional documentation with Nuxt UI's powerful components, enhanced ty
   ---
   code: |
     export default defineNuxtConfig({
-      modules: [
-        '@nuxt/ui',
-        '@nuxt/content',
-        'nuxt-og-image',
-        'nuxt-llms'
-      ],
+      modules: ['nuxt-gsheet'],
 
-      css: ['~/assets/css/main.css']
+      gsheet: {
+        sheets: {
+          products: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+        },
+        cache: {
+          enabled: true,
+          maxAge: 300
+        }
+      }
     })
   filename: nuxt.config.ts
   ---
 
   ```ts [nuxt.config.ts]
   export default defineNuxtConfig({
-    modules: [
-      '@nuxt/ui',
-      '@nuxt/content',
-      'nuxt-og-image',
-      'nuxt-llms'
-    ],
+    modules: ['nuxt-gsheet'],
 
-    css: ['~/assets/css/main.css']
+    gsheet: {
+      sheets: {
+        product: '1BxiMVs0XRA5nFMd****************************'
+      },
+      cache: {
+        enabled: true,
+        maxAge: 300
+      }
+    }
   })
   ```
   :::
@@ -73,191 +81,201 @@ Build professional documentation with Nuxt UI's powerful components, enhanced ty
 
 ::u-page-section{class="dark:bg-neutral-950"}
 #title
-Powered by Nuxt UI components
+Key Features
 
-#links
-  :::u-button
-  ---
-  color: neutral
-  size: lg
-  target: _blank
-  to: https://ui.nuxt.com/docs/getting-started/installation/nuxt
-  trailingIcon: i-lucide-arrow-right
-  variant: subtle
-  ---
-  Explore Nuxt UI
-  :::
+#description
+Keeps Spreadsheet IDs, API Keys, and Service Account JWT tokens strictly on the server side, hiding them from browser clients.
 
-#features
-  :::u-page-feature
-  ---
-  icon: i-lucide-palette
-  ---
-  #title
-  100+ UI Components
+#default
+  :::u-page-grid
+    ::::u-page-card
+    ---
+    icon: i-lucide-shield-check
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    Secure Server Proxy
 
-  #description
-  Access the complete Nuxt UI component library. From badges to modals, everything styled and accessible out of the box.
-  :::
+    #description
+    Keeps Spreadsheet IDs, API Keys, and Service Account JWT tokens strictly on the server side, hiding them from browser clients.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-type
-  ---
-  #title
-  Beautiful Typography
+    ::::u-page-card
+    ---
+    icon: i-lucide-bolt
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    5 Authentication Modes
 
-  #description
-  Pre-styled prose components with perfect visual harmony. No need for @tailwindcss/typography - get precise control over every element.
-  :::
+    #description
+    Auto-detects Google Apps Script Web Apps, GViz SQL queries, CSV feeds, API Keys, and Service Accounts.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-layers
-  ---
-  #title
-  Rich Prose Components
+    ::::u-page-card
+    ---
+    icon: i-lucide-cpu
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    Stampede Lock Protection
 
-  #description
-  Accordions, cards, callouts, tabs, steps, code blocks, and more - all provided by Nuxt UI for interactive documentation.
-  :::
+    #description
+    Prevents HTTP 429 quota exhaustion and serves stale cache during network failures.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-search
-  ---
-  #title
-  Built-in Search
+    ::::u-page-card
+    ---
+    icon: i-lucide-braces
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    Type-Safe Composables
 
-  #description
-  Full-text search with ContentSearch component. No need for Algolia - instant, relevant results with keyboard shortcuts (⌘K).
-  :::
+    #description
+    Auto-imported Vue composables (`useGSheet`, `useGSheetAsObject`, `useGSheetRow`, `useGSheetWrite`).
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-navigation
-  ---
-  #title
-  Smart Navigation
+    ::::u-page-card
+    ---
+    icon: i-lucide-panel-top
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    Nuxt DevTools Integration
 
-  #description
-  Auto-generated navigation with ContentNavigation and ContentToc components. Sticky table of contents and prev/next links.
-  :::
+    #description
+    Dedicated DevTools tab for tracking intercepted API calls, cache hit/miss ratio, and quota usage.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-moon
-  ---
-  #title
-  Dark Mode Ready
+    ::::u-page-card
+    ---
+    icon: i-lucide-sparkles
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    AI-Native Agent Skills & MCP
 
-  #description
-  Automatic theme switching with smooth transitions. Respects system preferences and remembers user choice.
+    #description
+    Bundled Agent Skills RFC implementation and live Model Context Protocol (MCP) server endpoint.
+    ::::
   :::
 ::
 
 ::u-page-section{class="dark:bg-neutral-950"}
 #title
-Enhanced with Nuxt Content
+Flexible Authentication Modes
 
-#links
-  :::u-button
-  ---
-  color: neutral
-  size: lg
-  target: _blank
-  to: https://content.nuxt.com/docs/getting-started/installation
-  trailingIcon: i-lucide-arrow-right
-  variant: subtle
-  ---
-  Explore Nuxt Content
-  :::
+#description
+Automatic detection for public, private, and serverless Google Sheets setups.
 
-#features
-  :::u-page-feature
-  ---
-  icon: i-simple-icons-markdown
-  ---
-  #title
-  MDC Enhanced Markdown
+#default
+  :::u-page-grid
+    ::::u-page-feature
+    ---
+    icon: i-lucide-globe
+    to: /auth-modes/gviz
+    ---
+    #title
+    GViz SQL Queries
 
-  #description
-  Write in Markdown while embedding Vue components. Seamlessly integrate interactive elements in your content.
-  :::
+    #description
+    Query public spreadsheets with Google Visualization API SQL syntax for instant, read-only access.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-file-text
-  ---
-  #title
-  File-based Routing
+    ::::u-page-feature
+    ---
+    icon: i-lucide-file-text
+    to: /auth-modes/csv
+    ---
+    #title
+    CSV Feeds
 
-  #description
-  Organize content in folders and files. Your documentation structure automatically becomes your navigation.
-  :::
+    #description
+    Fetch raw CSV data from public sheets with zero configuration and minimal overhead.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-code
-  ---
-  #title
-  Syntax Highlighting
+    ::::u-page-feature
+    ---
+    icon: i-lucide-code
+    to: /auth-modes/appscript
+    ---
+    #title
+    Apps Script Web Apps
 
-  #description
-  Beautiful code blocks with language detection, line numbers, and copy buttons. Support for 100+ languages.
-  :::
+    #description
+    Deploy a Google Apps Script endpoint to read and write private data with full control.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-database
-  ---
-  #title
-  Content Database
+    ::::u-page-feature
+    ---
+    icon: i-lucide-key-round
+    to: /auth-modes/apikey
+    ---
+    #title
+    API Key Access
 
-  #description
-  Query your content with a MongoDB-like API. Filter, sort, and search through your documentation programmatically.
-  :::
+    #description
+    Use a Google API Key for server-side requests while keeping the key hidden from the browser.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-file-code
-  ---
-  #title
-  Frontmatter Support
+    ::::u-page-feature
+    ---
+    icon: i-lucide-lock
+    to: /auth-modes/service-account
+    ---
+    #title
+    Service Accounts
 
-  #description
-  Add metadata to your content files. Define SEO tags, navigation properties, and custom fields.
-  :::
+    #description
+    Authenticate with JWT service account credentials for secure, private spreadsheet access.
+    ::::
 
-  :::u-page-feature
-  ---
-  icon: i-lucide-git-branch
-  ---
-  #title
-  Version Control
+    ::::u-page-feature
+    ---
+    icon: i-lucide-database-zap
+    to: /advanced/caching
+    ---
+    #title
+    Stampede-Proof Caching
 
-  #description
-  Content lives in your repository. Branch, review, and deploy documentation alongside your code.
+    #description
+    Built-in cache with lock protection and stale-while-revalidate to survive quota limits.
+    ::::
   :::
 ::
+
 
 ::u-page-section{class="dark:bg-gradient-to-b from-neutral-950 to-neutral-900"}
   :::u-page-c-t-a
   ---
   links:
     - label: Start building
-      to: '/getting-started'
+      to: '/getting-started/introduction'
       trailingIcon: i-lucide-arrow-right
     - label: View on GitHub
-      to: 'https://github.com/nuxt-ui-templates/docs'
+      to: 'https://github.com/narr07/nuxt-gsheet'
       target: _blank
       variant: subtle
       icon: i-simple-icons-github
-  title: Ready to build an amazing documentation?
-  description: Join thousands of developers building with Nuxt and Nuxt UI. Get this template and start shipping today.
+  title: Ready to build with Google Sheets?
+  description: Join developers building with Nuxt and nuxt-gsheet. Install the module and start shipping today.
   class: dark:bg-neutral-950
   ---
 
   :stars-bg
   :::
 ::
+
