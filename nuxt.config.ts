@@ -14,8 +14,8 @@ export default defineNuxtConfig({
     'nuxt-llms',
     '@nuxtjs/mcp-toolkit',
     '@nuxtjs/i18n',
-    'nuxt-gsheet',
-    'nuxt-studio'
+    'nuxt-gsheet'
+    // 'nuxt-studio'
   ],
 
   devtools: {
