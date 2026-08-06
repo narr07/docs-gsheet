@@ -64,6 +64,10 @@ export default defineNuxtConfig({
     }
   },
 
+  routeRules: {
+    '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } }
+  },
+
   experimental: {
     asyncContext: true
   },
@@ -74,6 +78,13 @@ export default defineNuxtConfig({
     prerender: {
       routes: prerenderRoutes,
       crawlLinks: true
+    },
+    cloudflare: {
+      pages: {
+        routes: {
+          exclude: ['/_nuxt/*', '/favicon.ico', '/build/*']
+        }
+      }
     }
   },
 
