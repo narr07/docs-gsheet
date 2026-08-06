@@ -1,39 +1,3 @@
-import fs from 'node:fs'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const __dirname = fileURLToPath(new URL('.', import.meta.url))
-
-function getContentRoutes(dir: string, basePrefix: string): string[] {
-  const routes: string[] = []
-  if (!fs.existsSync(dir)) return routes
-
-  function scan(currentDir: string, currentRoute: string) {
-    const entries = fs.readdirSync(currentDir, { withFileTypes: true })
-    for (const entry of entries) {
-      if (entry.isDirectory()) {
-        const cleanName = entry.name.replace(/^\d+\./, '')
-        scan(path.join(currentDir, entry.name), `${currentRoute}/${cleanName}`)
-      } else if (entry.isFile() && entry.name.endsWith('.md')) {
-        const nameWithoutExt = entry.name.replace(/\.md$/, '')
-        const cleanName = nameWithoutExt.replace(/^\d+\./, '')
-        if (cleanName === 'index') {
-          routes.push(currentRoute || basePrefix)
-        } else {
-          routes.push(`${currentRoute}/${cleanName}`)
-        }
-      }
-    }
-  }
-
-  scan(dir, basePrefix)
-  return routes
-}
-
-const enRoutes = getContentRoutes(path.resolve(__dirname, 'content/en'), '/en')
-const idRoutes = getContentRoutes(path.resolve(__dirname, 'content/id'), '/id')
-const prerenderRoutes = Array.from(new Set(['/', '/en', '/id', ...enRoutes, ...idRoutes]))
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -79,7 +43,7 @@ export default defineNuxtConfig({
       'agents/mcp': 'unenv/runtime/mock/noop'
     },
     prerender: {
-      routes: prerenderRoutes,
+      routes: ['/', '/en', '/id'],
       crawlLinks: true
     },
     cloudflare: {
@@ -111,13 +75,14 @@ export default defineNuxtConfig({
 
   llms: {
     domain: 'https://nuxtgsheet.permadi.dev/',
-    title: 'Nuxt Docs Template',
-    description: 'A template for building documentation with Nuxt UI and Nuxt Content.',
+    title: 'Nuxt GSheet Documentation',
+    description: 'Use Google Sheets as a lightweight CMS or database in Nuxt applications.',
     full: {
-      title: 'Nuxt Docs Template - Full Documentation',
-      description: 'This is the full documentation for the Nuxt Docs Template.'
+      title: 'Nuxt GSheet - Full Documentation',
+      description: 'Complete documentation for nuxt-gsheet module, including composables, 5 authentication modes, and AI integrations.'
     },
     sections: [
+      // English Sections
       {
         title: 'Getting Started (EN)',
         contentCollection: 'docs_en',
@@ -133,6 +98,36 @@ export default defineNuxtConfig({
         ]
       },
       {
+        title: 'Authentication Modes (EN)',
+        contentCollection: 'docs_en',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/en/auth-modes%' }
+        ]
+      },
+      {
+        title: 'AI Integrations (EN)',
+        contentCollection: 'docs_en',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/en/ai%' }
+        ]
+      },
+      {
+        title: 'Demos (EN)',
+        contentCollection: 'docs_en',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/en/demos%' }
+        ]
+      },
+      {
+        title: 'Tutorials (EN)',
+        contentCollection: 'docs_en',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/en/tutorials%' }
+        ]
+      },
+
+      // Indonesian Sections
+      {
         title: 'Memulai (ID)',
         contentCollection: 'docs_id',
         contentFilters: [
@@ -145,12 +140,40 @@ export default defineNuxtConfig({
         contentFilters: [
           { field: 'path', operator: 'LIKE', value: '/id/composables%' }
         ]
+      },
+      {
+        title: 'Mode Autentikasi (ID)',
+        contentCollection: 'docs_id',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/id/auth-modes%' }
+        ]
+      },
+      {
+        title: 'Integrasi AI (ID)',
+        contentCollection: 'docs_id',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/id/ai%' }
+        ]
+      },
+      {
+        title: 'Demo (ID)',
+        contentCollection: 'docs_id',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/id/demos%' }
+        ]
+      },
+      {
+        title: 'Tutorial (ID)',
+        contentCollection: 'docs_id',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/id/tutorials%' }
+        ]
       }
     ]
   },
 
   mcp: {
-    name: 'Docs template'
+    name: 'Nuxt GSheet Documentation MCP'
   },
 
   ogImage: {
