@@ -1,3 +1,36 @@
+import fs from 'node:fs'
+import path from 'node:path'
+
+function getContentRoutes(dir: string, basePrefix: string): string[] {
+  const routes: string[] = []
+  if (!fs.existsSync(dir)) return routes
+
+  function scan(currentDir: string, currentRoute: string) {
+    const entries = fs.readdirSync(currentDir, { withFileTypes: true })
+    for (const entry of entries) {
+      if (entry.isDirectory()) {
+        const cleanName = entry.name.replace(/^\d+\./, '')
+        scan(path.join(currentDir, entry.name), `${currentRoute}/${cleanName}`)
+      } else if (entry.isFile() && entry.name.endsWith('.md')) {
+        const nameWithoutExt = entry.name.replace(/\.md$/, '')
+        const cleanName = nameWithoutExt.replace(/^\d+\./, '')
+        if (cleanName === 'index') {
+          routes.push(currentRoute || basePrefix)
+        } else {
+          routes.push(`${currentRoute}/${cleanName}`)
+        }
+      }
+    }
+  }
+
+  scan(dir, basePrefix)
+  return routes
+}
+
+const enRoutes = getContentRoutes(path.resolve(__dirname, 'content/en'), '/en')
+const idRoutes = getContentRoutes(path.resolve(__dirname, 'content/id'), '/id')
+const prerenderRoutes = Array.from(new Set(['/', '/en', '/id', ...enRoutes, ...idRoutes]))
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -39,9 +72,7 @@ export default defineNuxtConfig({
 
   nitro: {
     prerender: {
-      routes: [
-        '/'
-      ],
+      routes: prerenderRoutes,
       crawlLinks: true
     }
   },

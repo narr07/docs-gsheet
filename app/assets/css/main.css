@@ -1,11 +1,12 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+@import url('https://fonts.googleapis.com/css2?family=TikTok+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 @source "../../../content/**/*";
 
 @theme static {
   --container-8xl: 90rem;
-  --font-sans: 'Public Sans', sans-serif;
+  --font-sans: 'TikTok Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   --color-green-50: #EFFDF5;
   --color-green-100: #D9FBE8;
