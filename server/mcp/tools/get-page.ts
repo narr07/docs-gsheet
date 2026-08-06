@@ -23,7 +23,8 @@ WORKFLOW: This tool returns the complete page content including title, descripti
     const siteUrl = import.meta.dev ? `${url.protocol}//${url.hostname}:${url.port}` : url.origin
 
     try {
-      const page = await queryCollection(event, 'docs')
+      const collection = path.startsWith('/id') ? 'docs_id' : 'docs_en'
+      const page = await queryCollection(event, collection)
         .where('path', '=', path)
         .select('title', 'path', 'description')
         .first()

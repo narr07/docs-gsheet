@@ -26,9 +26,14 @@ OUTPUT: Returns a structured list with:
     const siteUrl = import.meta.dev ? `${url.protocol}//${url.hostname}:${url.port}` : url.origin
 
     try {
-      const pages = await queryCollection(event, 'docs')
+      const pagesEn = await queryCollection(event, 'docs_en')
         .select('title', 'path', 'description')
         .all()
+      const pagesId = await queryCollection(event, 'docs_id')
+        .select('title', 'path', 'description')
+        .all()
+
+      const pages = [...pagesEn, ...pagesId]
 
       const result = pages.map(page => ({
         title: page.title,

@@ -9,23 +9,14 @@ export default defineNuxtConfig({
     'nuxt-llms',
     '@nuxtjs/mcp-toolkit',
     '@nuxtjs/i18n',
-    'nuxt-gsheet'
+    'nuxt-gsheet',
+    'nuxt-studio'
   ],
 
   devtools: {
     enabled: true
   },
-
   css: ['~/assets/css/main.css'],
-
-  i18n: {
-    locales: [
-      { code: 'en', name: 'English', language: 'en-US' },
-      { code: 'id', name: 'Bahasa Indonesia', language: 'id-ID' }
-    ],
-    defaultLocale: 'en',
-    strategy: 'prefix'
-  },
 
   content: {
     build: {
@@ -64,6 +55,15 @@ export default defineNuxtConfig({
     }
   },
 
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', language: 'en-US' },
+      { code: 'id', name: 'Bahasa Indonesia', language: 'id-ID' }
+    ],
+    defaultLocale: 'en',
+    strategy: 'prefix'
+  },
+
   llms: {
     domain: 'https://nuxtgsheet.permadi.dev/',
     title: 'Nuxt Docs Template',
@@ -74,17 +74,31 @@ export default defineNuxtConfig({
     },
     sections: [
       {
-        title: 'Getting Started',
-        contentCollection: 'docs',
+        title: 'Getting Started (EN)',
+        contentCollection: 'docs_en',
         contentFilters: [
-          { field: 'path', operator: 'LIKE', value: '/getting-started%' }
+          { field: 'path', operator: 'LIKE', value: '/en/getting-started%' }
         ]
       },
       {
-        title: 'Essentials',
-        contentCollection: 'docs',
+        title: 'Composables (EN)',
+        contentCollection: 'docs_en',
         contentFilters: [
-          { field: 'path', operator: 'LIKE', value: '/essentials%' }
+          { field: 'path', operator: 'LIKE', value: '/en/composables%' }
+        ]
+      },
+      {
+        title: 'Memulai (ID)',
+        contentCollection: 'docs_id',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/id/getting-started%' }
+        ]
+      },
+      {
+        title: 'Composables (ID)',
+        contentCollection: 'docs_id',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/id/composables%' }
         ]
       }
     ]
@@ -96,5 +110,13 @@ export default defineNuxtConfig({
 
   ogImage: {
     zeroRuntime: true
+  },
+  studio: {
+    repository: {
+      provider: 'github', // 'github' or 'gitlab'
+      owner: 'narr07',
+      repo: 'docs-gsheet',
+      branch: 'main'
+    }
   }
 })
