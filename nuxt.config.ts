@@ -40,7 +40,7 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare-pages',
     alias: {
-      'agents/mcp': 'unenv/runtime/mock/noop'
+      'agents/mcp': '~/server/mcp/noop.ts'
     },
     prerender: {
       routes: ['/', '/en', '/id'],
