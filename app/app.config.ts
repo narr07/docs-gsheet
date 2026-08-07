@@ -26,10 +26,12 @@ export default defineAppConfig({
     colorMode: true,
     links: [{
       'icon': 'i-simple-icons-github',
-      'to': 'https://github.com/narr07/docs-gsheet',
+      'to': 'https://github.com/narr07/nuxt-gsheet',
       'target': '_blank',
       'aria-label': 'GitHub'
-    }]
+    }
+
+    ]
   },
   footer: {
     credits: `Built with Nuxt UI • © ${new Date().getFullYear()} Nuxt GSheet`,
@@ -39,6 +41,11 @@ export default defineAppConfig({
       'to': 'https://github.com/narr07/docs-gsheet',
       'target': '_blank',
       'aria-label': 'Nuxt GSheet on GitHub'
+    }, {
+      'icon': 'i-lucide-user',
+      'to': 'https://permadi.dev/',
+      'target': '_blank',
+      'aria-label': 'Dinar Permadi Yusup'
     }]
   },
   toc: {
@@ -49,7 +56,7 @@ export default defineAppConfig({
       links: [{
         icon: 'i-lucide-star',
         label: 'Star on GitHub',
-        to: 'https://github.com/narr07/docs-gsheet',
+        to: 'https://github.com/narr07/nuxt-gsheet',
         target: '_blank'
       }]
     }

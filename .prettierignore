@@ -1,0 +1,3 @@
+# Ignore Markdown files from Prettier auto-formatting
+*.md
+**/*.md

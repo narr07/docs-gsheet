@@ -14,8 +14,8 @@ export default defineNuxtConfig({
     'nuxt-llms',
     '@nuxtjs/mcp-toolkit',
     '@nuxtjs/i18n',
-    'nuxt-gsheet'
-    // 'nuxt-studio'
+    'nuxt-gsheet',
+    'nuxt-studio'
   ],
 
   devtools: {
@@ -186,13 +186,13 @@ export default defineNuxtConfig({
 
   ogImage: {
     zeroRuntime: true
+  },
+  studio: {
+    repository: {
+      provider: 'github', // 'github' or 'gitlab'
+      owner: 'narr07',
+      repo: 'docs-gsheet',
+      branch: 'main'
+    }
   }
-  // studio: {
-  //   repository: {
-  //     provider: 'github', // 'github' or 'gitlab'
-  //     owner: 'narr07',
-  //     repo: 'docs-gsheet',
-  //     branch: 'main'
-  //   }
-  // }
 })
