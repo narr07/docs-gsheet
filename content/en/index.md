@@ -1,7 +1,7 @@
 ---
 seo:
   title: Nuxt Gsheet - Zero-Config Google Sheets Integration for Nuxt
-  description: Ultra-fast, zero-config, secure Google Sheets integration for Nuxt 3 and 4 with built-in stampede protection, multi-auth detection, and DevTools dashboard.
+  description: Ultra-fast, zero-config, secure Google Sheets integration for Nuxt 3, 4, and 5 with built-in stampede protection, multi-auth detection, and DevTools dashboard.
 ---
 
 ::u-page-hero{class="dark:bg-gradient-to-b from-neutral-900  to-neutral-950"}

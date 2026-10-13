@@ -1,7 +1,7 @@
 ---
 seo:
   title: Nuxt Gsheet - Integrasi Google Sheets Zero-Config untuk Nuxt
-  description: Integrasi Google Sheets yang super cepat, zero-config, dan aman untuk Nuxt 3 dan 4 dengan perlindungan stampede lock, auto-detection 5 mode auth, dan dashboard DevTools.
+  description: Integrasi Google Sheets yang super cepat, zero-config, dan aman untuk Nuxt 3, 4, dan 5 dengan perlindungan stampede lock, auto-detection 5 mode auth, dan dashboard DevTools.
 ---
 
 ::u-page-hero{class="dark:bg-gradient-to-b from-neutral-900  to-neutral-950"}
