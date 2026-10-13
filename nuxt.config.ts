@@ -23,12 +23,6 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/main.css'],
 
-  // Google's public sample spreadsheet, used by the live examples
-  gsheet: {
-    auth: 'gviz',
-    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
-  },
-
   content: {
     build: {
       markdown: {
@@ -75,6 +69,12 @@ export default defineNuxtConfig({
     }
   },
 
+  // Google's public sample spreadsheet, used by the live examples
+  gsheet: {
+    auth: 'gviz',
+    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+  },
+
   i18n: {
     locales: [
       { code: 'en', name: 'English', language: 'en-US' },
@@ -106,6 +106,13 @@ export default defineNuxtConfig({
         contentCollection: 'docs_en',
         contentFilters: [
           { field: 'path', operator: 'LIKE', value: '/en/composables%' }
+        ]
+      },
+      {
+        title: 'Components (EN)',
+        contentCollection: 'docs_en',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/en/components%' }
         ]
       },
       {
@@ -150,6 +157,13 @@ export default defineNuxtConfig({
         contentCollection: 'docs_id',
         contentFilters: [
           { field: 'path', operator: 'LIKE', value: '/id/composables%' }
+        ]
+      },
+      {
+        title: 'Komponen (ID)',
+        contentCollection: 'docs_id',
+        contentFilters: [
+          { field: 'path', operator: 'LIKE', value: '/id/components%' }
         ]
       },
       {

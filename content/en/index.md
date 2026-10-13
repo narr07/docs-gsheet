@@ -146,6 +146,20 @@ Keeps Spreadsheet IDs, API Keys, and Service Account JWT tokens strictly on the 
 
     ::::u-page-card
     ---
+    icon: i-lucide-table
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    Tables in Markdown
+
+    #description
+    Render any sheet range as a live table with one line, `::gsheet-table`, in Nuxt Content or Comark.
+    ::::
+
+    ::::u-page-card
+    ---
     icon: i-lucide-panel-top
     spotlight: true
     spotlightColor: primary

@@ -146,6 +146,20 @@ Menjaga Spreadsheet ID, API Key, dan token Service Account JWT tetap aman di sis
 
     ::::u-page-card
     ---
+    icon: i-lucide-table
+    spotlight: true
+    spotlightColor: primary
+    variant: outline
+    ---
+    #title
+    Tabel di Markdown
+
+    #description
+    Tampilkan range sheet sebagai tabel dengan satu baris, `::gsheet-table`, di Nuxt Content maupun Comark.
+    ::::
+
+    ::::u-page-card
+    ---
     icon: i-lucide-panel-top
     spotlight: true
     spotlightColor: primary
