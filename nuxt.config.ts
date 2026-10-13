@@ -23,6 +23,12 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/main.css'],
 
+  // Google's public sample spreadsheet, used by the live examples
+  gsheet: {
+    auth: 'gviz',
+    spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+  },
+
   content: {
     build: {
       markdown: {
